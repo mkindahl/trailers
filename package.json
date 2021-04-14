@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "trailers",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "Parse message trailers",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -11,19 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/mkindahl/trailers.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
-    "JavaScript"
+    "Trailers",
+    "RFC2822"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": "Mats Kindahl",
+  "email": "mats.kindahl@gmail.com",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/mkindahl/trailers/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/mkindahl/trailers#readme",
   "dependencies": {
     "@actions/core": "^1.2.5"
   },
