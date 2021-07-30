@@ -1,23 +1,19 @@
-const wait = require('./wait');
-const process = require('process');
-const cp = require('child_process');
-const path = require('path');
+const trailers = require('./trailers');
 
-test('throws invalid number', async () => {
-  await expect(wait('foo')).rejects.toThrow('milliseconds not a number');
+const good = `
+Just a test
+
+Second paragraph
+
+Co-authored-by: santa
+Title: Space: the final frontier
+multi-line: field with
+   multiple lines
+`;
+
+test('parse', () => {
+    const attrs = trailers.parse(good);
+    expect(attrs['title']).toEqual('Space: the final frontier');
+    expect(attrs['co-authored-by']).toEqual('santa');
+    expect(attrs['multi-line']).toBe('field with multiple lines');
 });
-
-test('wait 500 ms', async () => {
-  const start = new Date();
-  await wait(500);
-  const end = new Date();
-  var delta = Math.abs(end - start);
-  expect(delta).toBeGreaterThanOrEqual(500);
-});
-
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  process.env['INPUT_MILLISECONDS'] = 500;
-  const ip = path.join(__dirname, 'index.js');
-  console.log(cp.execSync(`node ${ip}`, {env: process.env}).toString());
-})
